@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  client:
+        build: ../books-redux
+        ports: 
+          - "3000:3000"
+        container_name: react-express-client
+        depends_on: 
+          - server
+  app: 
+    image: 'book-api'
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+    depends_on: 
+       -  mongodb
+    links:
+        - 'mongodb:mongodb'
+    networks:
+        - apinw
+  mongodb:
+    image: 'mongo'
+    ports: 
+        - "27017:27017"
+    networks: 
+        - apinw
+
+networks: 
+    apinw:
