@@ -30,4 +30,4 @@ app.use("/api", userRoute)
 //     res.status(404).json(errors.routeNotExists);
 // })
 
-app.listen(80, () => console.log('Server started on port 4000'))
+app.listen(3000, () => console.log('Server started on port 4000'))
