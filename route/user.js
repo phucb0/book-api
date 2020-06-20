@@ -14,7 +14,8 @@ userRoute.get("/", [userController.checkAuthenticate, userController.checkPermis
 userRoute.get("/users", [userController.checkAuthenticate, userController.checkPermissions(({ action: 'read', resource: 'user' })), userController.getListUsers])
 
 // userRoute.get("/register", userController.checkAuthenticate)
-userRoute.post("/register", userController.validateRegister)
+// userRoute.post("/register", userController.validateRegister)
+userRoute.post("/register", (req, res) => {res.send('ok')})
 
 // userRoute.get("/login", [userController.checkAuthenticate, userController.getListUsers])
 userRoute.post("/login", userController.validateLogin)
